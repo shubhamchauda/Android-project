@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">login_app</string>
+    <string name="title_activity_home">home</string>
+</resources>
