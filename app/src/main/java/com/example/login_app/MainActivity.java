@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+
     @Override
     protected void onCreate (Bundle savedInstanceState) {
 
@@ -37,22 +38,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         blogin.setOnClickListener(this);
         register.setOnClickListener(this);
         new ProgressDialog(this);
-        if(firebaseAuth.getCurrentUser()!=null)
-        {
-            finish();
-            startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
-
-        }
-
+        firebaseAuth = FirebaseAuth.getInstance();
 
     }
+    void show()
+    {
+
+    }
+
     void userLogin()
     {
+
         String email = userid.getText().toString().trim();
         String pass = password.getText().toString().trim();
+
+
         if(TextUtils.isEmpty(email))
     {
         Toast.makeText(this,"please enter email",Toast.LENGTH_SHORT).show();
+
         return;
     }
     if(TextUtils.isEmpty(pass))
@@ -62,6 +66,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         progressDialog.setMessage("login....");
         progressDialog.show();
+        firebaseAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task)
+            {if(task.isSuccessful())
+            {
+
+                startActivity(new Intent(getApplicationContext(),show.class));
+            }
+            else
+            {
+                Toast.makeText(MainActivity.this,"Could not Login Please try again",Toast.LENGTH_SHORT).show();
+            }
+
+            }
+        });
 
 
         }
