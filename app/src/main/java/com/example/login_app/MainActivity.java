@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 {
     Button blogin,register ;
     EditText userid,password;
-    ProgressDialog progressDialog;
+   // ProgressDialog progressDialog;
     FirebaseAuth firebaseAuth;
 
 
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         register = (Button) findViewById(R.id.lregister);
         blogin.setOnClickListener(this);
         register.setOnClickListener(this);
-        new ProgressDialog(this);
+     //   new ProgressDialog(this);
         firebaseAuth = FirebaseAuth.getInstance();
 
     }
@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this,"please enter password",Toast.LENGTH_SHORT).show();
             return;
         }
-        progressDialog.setMessage("login....");
-        progressDialog.show();
+       // progressDialog.setMessage("login....");
+        //progressDialog.show();
         firebaseAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task)
