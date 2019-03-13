@@ -9,7 +9,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class activity_register extends AppCompatActivity implements View.OnClickListener {
-    Button register;
+    Button register,login;
     EditText name, userid, password, age;
     TextView textview1;
     ProgressDialog progressDialog;
@@ -36,12 +35,14 @@ public class activity_register extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_register);
+        login = (Button)findViewById(R.id.blogin);
         register = (Button) findViewById(R.id.register);
         name = (EditText) findViewById(R.id.name);
         userid = (EditText) findViewById(R.id.userid);
         password = (EditText) findViewById(R.id.password);
         age = (EditText) findViewById(R.id.age);
         register.setOnClickListener(this);
+        login.setOnClickListener(this);
 
     }
     void  login()
@@ -50,7 +51,7 @@ public class activity_register extends AppCompatActivity implements View.OnClick
     }
    public void registerUser() {
         String uname = name.getText().toString().trim();
-        String email = userid.getText().toString().trim();
+       String email = userid.getText().toString().trim();
         String pass = password.getText().toString().trim();
         String age1 = age.getText().toString().trim();
         if (TextUtils.isEmpty(uname)) {
@@ -79,19 +80,17 @@ public class activity_register extends AppCompatActivity implements View.OnClick
                 if (task.isSuccessful())
             {
                 Toast.makeText(activity_register.this,"Register Successifully...",Toast.LENGTH_SHORT).show();
-                login();
+                startActivity(new Intent(getApplicationContext(), Selection.class));
                 return;
             }
             else  login();
             {
                 Toast.makeText(activity_register.this,"could not register please try again",Toast.LENGTH_SHORT).show();
-                login();
+
                 return;
             }
             }
         });
-        {
-        }
     }
 
 
@@ -102,7 +101,10 @@ public class activity_register extends AppCompatActivity implements View.OnClick
     {
         registerUser();
     }
-
+    if (login == view)
+         {
+             login();
+         }
 
 
 
