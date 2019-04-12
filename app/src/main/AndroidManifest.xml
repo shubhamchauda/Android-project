@@ -11,9 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".ShowMenuForCust"></activity>
+        <activity android:name=".LoginAsCust" />
+        <activity android:name=".ShowMenu" />
+        <activity android:name=".ShowSelection" />
+        <activity android:name=".Addmenu" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".Selection" />
-        <activity android:name=".ProfileActivity" />
         <activity android:name=".show" />
         <activity android:name=".activity_register" />
         <activity android:name=".MainActivity">

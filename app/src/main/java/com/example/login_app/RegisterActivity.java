@@ -1,5 +1,7 @@
 package com.example.login_app;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -19,10 +21,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     EditText hotalname, ownername, tableno, address;
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
-
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        progressDialog = new ProgressDialog(this);
         setContentView(R.layout.activity_register2);
         hotalname = (EditText) findViewById(R.id.hotelname);
         ownername = (EditText) findViewById(R.id.ownername);
@@ -61,10 +64,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             Toast.makeText(this, "please enter address", Toast.LENGTH_SHORT).show();
             return;
         }
+        progressDialog.setMessage("Registring User.....");
+        progressDialog.show();
         HotalInformation hotalinfo = new HotalInformation(hname, oname, tno, add);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        databaseReference.child(user.getUid()).push().setValue(hotalinfo);
+        databaseReference.child("user").child(user.getUid()).setValue(hotalinfo);
         Toast.makeText(this, "Information is save...", Toast.LENGTH_LONG).show();
+        finish();
+        startActivity(new Intent(RegisterActivity.this, Selection.class));
+
+
 
 
     }
