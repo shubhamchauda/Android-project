@@ -22,14 +22,15 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class LoginAsCust extends AppCompatActivity {
+    HoteInfo hotelInfo = new HoteInfo();
+    MenuItem menuItem = new MenuItem();
     ListView hotellist;
     ArrayList<String> list;
     ArrayAdapter<String> adapter;
     FirebaseUser user;
-    DatabaseReference databaseReference;
-    HoteInfo hotelInfo = new HoteInfo();
-    TextView selecthotel;
+    DatabaseReference databaseReference ,databaseReference1;
 
+    TextView selecthotel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +50,16 @@ public class LoginAsCust extends AppCompatActivity {
                     Log.d("hotel name", "onDataChange:" + hotelInfo.getHotelname());
                     Log.d("hotel name", "onDataChange:" + hotelInfo.getOwnername());
                     Log.d("hotel name", "onDataChange:" + hotelInfo.getAddress());
+
                     list.add(hotelInfo.getHotelname());
+                   for(DataSnapshot ds1:ds.child("menu").getChildren())
+                   {
+
+                     menuItem = ds1.getValue(MenuItem.class);
+                       Log.d("itemName", "onDataChange:"+menuItem.iname);
 
 
+                   }
                 }
                 hotellist.setAdapter(adapter);
                 hotellist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -59,7 +67,10 @@ public class LoginAsCust extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String s = list.get(position);
                         Intent intent = new Intent(LoginAsCust.this, ShowMenuForCust.class);
-                        Intent intent1 = intent.putExtra("Name", s);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("Menuitem",menuItem.iname);
+                     intent.putExtras(bundle);
+
                         startActivity(intent);
 
 
