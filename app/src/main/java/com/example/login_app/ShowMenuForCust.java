@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class ShowMenuForCust extends AppCompatActivity {
     TextView hname;
 
@@ -14,9 +16,9 @@ public class ShowMenuForCust extends AppCompatActivity {
         setContentView(R.layout.activity_show_menu_for_cust);
         hname = (TextView) findViewById(R.id.hotelname);
         Intent intent = getIntent();
-        String itemname = intent.getStringExtra("Menuitem");
-        hname.setText(itemname);
+        Bundle bundle = new Bundle();
 
+        ArrayList<String>menulist = (ArrayList<String>)bundle.getSerializable("menulist");
 
     }
 }

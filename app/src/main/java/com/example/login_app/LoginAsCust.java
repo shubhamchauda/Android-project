@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class LoginAsCust extends AppCompatActivity {
@@ -29,6 +30,7 @@ public class LoginAsCust extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     FirebaseUser user;
     DatabaseReference databaseReference ,databaseReference1;
+    ArrayList<String>menulist;
 
     TextView selecthotel;
 
@@ -40,6 +42,8 @@ public class LoginAsCust extends AppCompatActivity {
         hotellist = (ListView) findViewById(R.id.listofhotels);
         user = FirebaseAuth.getInstance().getCurrentUser();
         list = new ArrayList<>();
+        menulist = new ArrayList<>();
+
         adapter = new ArrayAdapter<String>(this, R.layout.hotels, R.id.hotels, list);
         databaseReference = FirebaseDatabase.getInstance().getReference().child("user");
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -57,6 +61,7 @@ public class LoginAsCust extends AppCompatActivity {
 
                      menuItem = ds1.getValue(MenuItem.class);
                        Log.d("itemName", "onDataChange:"+menuItem.iname);
+                       menulist.add(menuItem.iname +"   "+menuItem.getIprice());
 
 
                    }
@@ -67,9 +72,10 @@ public class LoginAsCust extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String s = list.get(position);
                         Intent intent = new Intent(LoginAsCust.this, ShowMenuForCust.class);
+
                         Bundle bundle = new Bundle();
-                        bundle.putString("Menuitem",menuItem.iname);
-                     intent.putExtras(bundle);
+                        bundle.putSerializable("menulist",(Serializable) menulist);
+                           intent.putExtras(bundle);
 
                         startActivity(intent);
 
