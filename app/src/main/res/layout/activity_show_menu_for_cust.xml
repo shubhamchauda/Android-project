@@ -5,12 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".ShowMenuForCust">
 
-    <TextView
-        android:id="@+id/hotelname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" "
-        android:textSize="15dp"
-        tools:layout_editor_absoluteX="131dp"
-        tools:layout_editor_absoluteY="211dp" />
+    <ListView
+        android:id="@+id/listofmenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
 </android.support.constraint.ConstraintLayout>

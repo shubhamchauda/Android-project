@@ -1,7 +1,12 @@
 package com.example.login_app;
 
+
 public class MenuItem {
     String iprice, iname, icategory;
+
+    MenuItem menuItem;
+
+
 
     public String getIprice() {
         return iprice;

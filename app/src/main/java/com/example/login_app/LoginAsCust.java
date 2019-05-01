@@ -19,7 +19,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class LoginAsCust extends AppCompatActivity {
@@ -56,28 +55,20 @@ public class LoginAsCust extends AppCompatActivity {
                     Log.d("hotel name", "onDataChange:" + hotelInfo.getAddress());
 
                     list.add(hotelInfo.getHotelname());
-                   for(DataSnapshot ds1:ds.child("menu").getChildren())
-                   {
 
-                     menuItem = ds1.getValue(MenuItem.class);
-                       Log.d("itemName", "onDataChange:"+menuItem.iname);
-                       menulist.add(menuItem.iname +"   "+menuItem.getIprice());
-
-
-                   }
                 }
                 hotellist.setAdapter(adapter);
                 hotellist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String s = list.get(position);
+                        Log.d("list", "position:"+s);
+
                         Intent intent = new Intent(LoginAsCust.this, ShowMenuForCust.class);
 
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("menulist",(Serializable) menulist);
-                           intent.putExtras(bundle);
-
-                        startActivity(intent);
+                         //  intent.putExtra("menulist",menulist);
+                        intent.putExtra("hotel",s);
+                           startActivity(intent);
 
 
                     }
