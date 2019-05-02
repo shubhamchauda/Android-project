@@ -68,7 +68,9 @@ public class Show_Order extends AppCompatActivity  implements View.OnClickListen
                }
                else
                {
-                   orders.add("no orders");
+                   orders.add("no order");
+                   list.setAdapter(adapter);
+
 
                }
            }
