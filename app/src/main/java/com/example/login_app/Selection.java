@@ -9,7 +9,7 @@ import android.widget.Button;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Selection extends AppCompatActivity implements View.OnClickListener {
-    Button show1, hregister, logout, addmenu;
+    Button show1, hregister, logout, addmenu,showorders;
     FirebaseAuth firebaseAuth;
 
     @Override
@@ -19,11 +19,13 @@ public class Selection extends AppCompatActivity implements View.OnClickListener
         hregister = (Button) findViewById(R.id.hregister);
         show1 = (Button) findViewById(R.id.show);
         logout = (Button) findViewById(R.id.logout);
+        showorders = (Button) findViewById(R.id.showorders);
         addmenu = (Button) findViewById(R.id.addmenu);
         hregister.setOnClickListener(this);
         show1.setOnClickListener(this);
         logout.setOnClickListener(this);
         addmenu.setOnClickListener(this);
+        showorders.setOnClickListener(this);
         firebaseAuth = FirebaseAuth.getInstance();
 
 
@@ -42,11 +44,16 @@ public class Selection extends AppCompatActivity implements View.OnClickListener
 
             startActivity(new Intent(this, Addmenu.class));
         }
+        if(view == showorders)
+        {
+              startActivity(new Intent(this,Show_Order.class));
+        }
         if (view == logout) {
             firebaseAuth.signOut();
             finish();
             startActivity(new Intent(this, MainActivity.class));
         }
+
 
     }
 }
