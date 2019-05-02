@@ -63,7 +63,7 @@ public class activity_register extends AppCompatActivity implements View.OnClick
             Toast.makeText(this, "please enter password ", Toast.LENGTH_SHORT).show();
             return;
         }
-       if (TextUtils.isEmpty(pass)) {
+       if (TextUtils.isEmpty(cpass)) {
            Toast.makeText(this, "please enter confirm password ", Toast.LENGTH_SHORT).show();
            return;
        }

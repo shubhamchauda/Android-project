@@ -1,51 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="horizontal"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="6"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+        android:orientation="vertical"
+        android:layout_marginHorizontal="8dp">
 
-            <TextView
-                android:id="@+id/itemcat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+    <TextView
 
-                android:text=""
-                android:textSize="25dp"
-                android:textStyle="bold"
-                 />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/listDecButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-"/>
-
-        <TextView
-            android:id="@+id/listOrderQuantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:layout_marginHorizontal="8dp"
-            android:text="0"/>
-
-        <Button
-            android:id="@+id/listIncButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+"/>
-
+        android:id="@+id/itemcat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text=""
+        android:textSize="20sp" />
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>

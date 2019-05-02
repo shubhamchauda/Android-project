@@ -26,7 +26,7 @@
                 android:layout_margin="10dp"
                 android:text="Welcome in Hotel Regestration"
 
-                android:textStyle="bold|italic" />
+              />
 
             <TextView
                 android:id="@+id/textname"
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Hotel Name"
-                android:textStyle="bold|italic" />
+                />
 
             <EditText
                 android:id="@+id/hotelname"
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Owner Nwme"
-                android:textStyle="bold|italic" />
+                 />
 
             <EditText
                 android:id="@+id/ownername"
@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="No. of Tables"
-                android:textStyle="bold|italic" />
+                />
 
             <EditText
                 android:id="@+id/tableno"
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Address"
-                android:textStyle="bold|italic" />
+                 />
 
             <EditText
                 android:id="@+id/address"
