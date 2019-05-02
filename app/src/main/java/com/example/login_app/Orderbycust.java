@@ -45,6 +45,7 @@ public class Orderbycust extends AppCompatActivity implements View.OnClickListen
         String name = oname.getText().toString();
         String qntty = quantity.getText().toString();
         String table = tableno.getText().toString();
+        String iname = itemname.getText().toString();
         if(TextUtils.isEmpty(name))
         {
             Toast.makeText(Orderbycust.this ,"please enter name",Toast.LENGTH_SHORT).show();
@@ -59,7 +60,7 @@ public class Orderbycust extends AppCompatActivity implements View.OnClickListen
         }
         progressDialog.setMessage("Ordering food");
         progressDialog.show();
-        Order order = new Order(name,table,qntty,this.hname);
+        Order order = new Order(name,table,qntty,this.hname,iname);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.child("Order").push().setValue(order);
         Toast.makeText(this, "Food is orderd", Toast.LENGTH_LONG).show();

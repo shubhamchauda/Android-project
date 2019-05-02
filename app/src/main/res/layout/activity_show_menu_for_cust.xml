@@ -3,13 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ShowMenuForCust">
 
-    <ListView
-        android:id="@+id/listofmenu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-    </ListView>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical"
+        android:layout_marginHorizontal="8dp">
+
+        <ListView
+            android:id="@+id/listofmenu"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="12dp"
+            android:smoothScrollbar="true" />
+
+
+        <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/showorder"
+        android:text="Show Order"
+        android:layout_marginVertical="12dp"/>
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

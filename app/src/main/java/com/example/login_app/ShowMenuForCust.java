@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,9 +20,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ShowMenuForCust extends AppCompatActivity {
+public class ShowMenuForCust extends AppCompatActivity implements View.OnClickListener {
     MenuItem menuItem;
-
+    Button showorder;
     HoteInfo hoteInfo = new HoteInfo();
     ArrayList<String>menulist;
     ArrayAdapter<String>adapter;
@@ -37,8 +38,8 @@ public class ShowMenuForCust extends AppCompatActivity {
         setContentView(R.layout.activity_show_menu_for_cust);
         hname = (TextView) findViewById(R.id.hotelname);
         menudetaillist = (ListView)findViewById(R.id.listofmenu);
-
-
+        showorder = (Button)findViewById(R.id.showorder);
+        showorder.setOnClickListener(ShowMenuForCust.this);
        adapter = new ArrayAdapter<String>(this, R.layout.order_menu, R.id.itemcat,menulist);
 
 
@@ -87,7 +88,17 @@ public class ShowMenuForCust extends AppCompatActivity {
         });
     }
 
+
+    @Override
+    public void onClick(View v)
+    {
+        if(v==showorder)
+        {
+           startActivity(new Intent(this,Show_Order.class));
+        }
+    }
 }
+
 
 /*
 class ViewHolder

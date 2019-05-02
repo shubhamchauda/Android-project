@@ -1,21 +1,31 @@
 package com.example.login_app;
 
 public class Order
-{ String name,table,quantity,hname  ;
+{ String name,table,quantity,hname,itemname  ;
 
     public Order() {
         String name,table,quantity,hanme ;
     }
 
-    public Order(String name, String table, String quantity,String hname) {
+    public Order(String name, String table, String quantity,String hname,String itemname) {
         this.name = name;
         this.table = table;
         this.quantity = quantity;
         this.hname = hname;
+        this.itemname = itemname;
 
 
     }
 
+
+
+    public String getItemname() {
+        return itemname;
+    }
+
+    public void setItemname(String itemname) {
+        this.itemname = itemname;
+    }
     public String getName() {
         return name;
     }
