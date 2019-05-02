@@ -46,7 +46,7 @@ public class Selection extends AppCompatActivity implements View.OnClickListener
         }
         if(view == showorders)
         {
-              startActivity(new Intent(this,Show_Order.class));
+              startActivity(new Intent(this,SelectionShowOrder.class));
         }
         if (view == logout) {
             firebaseAuth.signOut();

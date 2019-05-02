@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Show_Order"></activity>
+        <activity android:name=".SelectionShowOrder"></activity>
+        <activity android:name=".Show_Order" />
         <activity android:name=".Orderbycust" />
         <activity android:name=".ShowMenuForCust" />
         <activity android:name=".LoginAsCust" />

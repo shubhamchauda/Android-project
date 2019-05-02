@@ -1,5 +1,6 @@
 package com.example.login_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,7 @@ public class Show_Order extends AppCompatActivity  implements View.OnClickListen
     Button show;
     Order order;
     String table;
+    String hname;
     ArrayList<String>orders;
     ArrayAdapter<String>adapter;
 
@@ -40,6 +42,8 @@ public class Show_Order extends AppCompatActivity  implements View.OnClickListen
         adapter = new ArrayAdapter<>(this ,R.layout.order_menu,R.id.itemcat,orders);
         show = (Button)findViewById(R.id.show);
         show.setOnClickListener(this);
+        Intent intent = getIntent();
+         hname = intent.getStringExtra("hotelname");
 
     }
   void  showOrder()
@@ -57,10 +61,10 @@ public class Show_Order extends AppCompatActivity  implements View.OnClickListen
                {
                    order = ds.getValue(Order.class);
                    Log.d("orders", "onDataChange: "+order.hname);
-                   if(table.equals(order.table))
+                   if(table.equals(order.table) && hname.equals(order.hname))
                    {
-                      orders.add(order.itemname +"    Quantity "+order.quantity);
-                       Log.d("list", "orders ");
+                      orders.add(order.itemname +"  Quantity "+order.quantity +"  Table no." + order.table);
+                       Log.d("list", "orders "+ order.table);
                    }
                }
                if(orders.size()>0) {

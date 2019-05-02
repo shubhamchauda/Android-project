@@ -66,7 +66,7 @@ public class Orderbycust extends AppCompatActivity implements View.OnClickListen
         Toast.makeText(this, "Food is orderd", Toast.LENGTH_LONG).show();
         progressDialog.dismiss();
         Intent intent = new Intent(Orderbycust.this, ShowMenuForCust.class);
-        intent.putExtra("name",hname);
+        intent.putExtra("hotel",hname);
         startActivity(intent);
         finish();
     }

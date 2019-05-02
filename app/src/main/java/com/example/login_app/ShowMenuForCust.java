@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 public class ShowMenuForCust extends AppCompatActivity implements View.OnClickListener {
     MenuItem menuItem;
+     String name ;
     Button showorder;
     HoteInfo hoteInfo = new HoteInfo();
     ArrayList<String>menulist;
@@ -31,7 +32,7 @@ public class ShowMenuForCust extends AppCompatActivity implements View.OnClickLi
     DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final String hotelname;
+
         menulist = new ArrayList<>();
         menuItem = new MenuItem();
         super.onCreate(savedInstanceState);
@@ -44,7 +45,7 @@ public class ShowMenuForCust extends AppCompatActivity implements View.OnClickLi
 
 
         Intent intent = getIntent();
-     final String name = intent.getStringExtra("hotel");
+    name = intent.getStringExtra("hotel");
         Log.d("name", "name "+name);
         databaseReference = FirebaseDatabase.getInstance().getReference().child("user");
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -93,8 +94,9 @@ public class ShowMenuForCust extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v)
     {
         if(v==showorder)
-        {
-           startActivity(new Intent(this,Show_Order.class));
+        { Intent intent = new Intent(this,Show_Order.class);
+          intent.putExtra("hotelname",name );
+           startActivity(intent);
         }
     }
 }
