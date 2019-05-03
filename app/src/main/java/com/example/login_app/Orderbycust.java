@@ -46,29 +46,36 @@ public class Orderbycust extends AppCompatActivity implements View.OnClickListen
         String qntty = quantity.getText().toString();
         String table = tableno.getText().toString();
         String iname = itemname.getText().toString();
+        if(TextUtils.isEmpty(qntty))
+        {
+            Toast.makeText(Orderbycust.this ,"please enter quantity",Toast.LENGTH_SHORT).show();
+            return;
+        }
         if(TextUtils.isEmpty(name))
         {
             Toast.makeText(Orderbycust.this ,"please enter name",Toast.LENGTH_SHORT).show();
+            return;
         }
-        if(TextUtils.isEmpty(qntty))
-        {
-            Toast.makeText(Orderbycust.this ,"please enter name",Toast.LENGTH_SHORT).show();
-        }
+
         if(TextUtils.isEmpty(table))
         {
-            Toast.makeText(Orderbycust.this ,"please enter name",Toast.LENGTH_SHORT).show();
+            Toast.makeText(Orderbycust.this ,"please enter enter table no",Toast.LENGTH_SHORT).show();
+             return;
         }
-        progressDialog.setMessage("Ordering food");
-        progressDialog.show();
-        Order order = new Order(name,table,qntty,this.hname,iname);
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("Order").push().setValue(order);
-        Toast.makeText(this, "Food is orderd", Toast.LENGTH_LONG).show();
-        progressDialog.dismiss();
-        Intent intent = new Intent(Orderbycust.this, ShowMenuForCust.class);
-        intent.putExtra("hotel",hname);
-        startActivity(intent);
-        finish();
+
+            progressDialog.setMessage("Ordering food");
+            progressDialog.show();
+            Order order = new Order(name, table, qntty, this.hname, iname);
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+            databaseReference.child("Order").push().setValue(order);
+            Toast.makeText(this, "Food is orderd", Toast.LENGTH_LONG).show();
+            progressDialog.dismiss();
+            Intent intent = new Intent(Orderbycust.this, ShowMenuForCust.class);
+            intent.putExtra("hotel", hname);
+            startActivity(intent);
+            finish();
+
+
     }
 
     @Override

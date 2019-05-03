@@ -75,6 +75,7 @@ public class ShowMenuForCust extends AppCompatActivity implements View.OnClickLi
                         intent.putExtra("itemname",mname);
                         intent.putExtra("hotelname",name);
                         startActivity(intent);
+
                     }
                 });
 
@@ -97,6 +98,7 @@ public class ShowMenuForCust extends AppCompatActivity implements View.OnClickLi
         { Intent intent = new Intent(this,Show_Order.class);
           intent.putExtra("hotelname",name );
            startActivity(intent);
+
         }
     }
 }
