@@ -1,2 +1,7 @@
 # Android-project
-## A project for android
+## Smart Virtual waiter
+<br>
+Database :- Firebase
+Language :- java
+
+
